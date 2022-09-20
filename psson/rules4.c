@@ -82,24 +82,24 @@ static t_list	*find_pre_last(t_list *list)
 	return (pre_last);
 }
 
-static void	ft_reverse_rotate(t_list *list)
+static void	ft_reverse_rotate(t_list **list)
 {
 	t_list	*pre_last;
 	t_list	*last;
 	t_list	*tmp;
 
-	if (list && list->next)
+	if (*list && (*list)->next)
 	{
-		tmp = list;
-		pre_last = find_pre_last(list);
+		tmp = *list;
+		pre_last = find_pre_last(*list);
 		last = pre_last->next;
 		pre_last->next = NULL;
 		last->next = tmp;
-		list = last;
+		*list = last;
 	}
 }
 
-static void rrr(t_list *a, t_list *b, int p)
+static void rrr(t_list **a, t_list **b, int p)
 {
 		ft_reverse_rotate(a);
 		ft_reverse_rotate(b);
@@ -109,7 +109,7 @@ static void rrr(t_list *a, t_list *b, int p)
 		ft_putstr("\x1b[36mExecute rrr:\n\n");
 }
 
-void	rra_rrb_rrr(t_list *a, t_list *b, char c, int p)
+void	rra_rrb_rrr(t_list **a, t_list **b, char c, int p)
 {
 	if (c == 'a')
 	{
@@ -130,5 +130,5 @@ void	rra_rrb_rrr(t_list *a, t_list *b, char c, int p)
 	else
 		rrr(a, b, p);
 	if (p == 2)
-		visualizer(a, b);
+		visualizer(*a, *b);
 }

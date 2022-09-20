@@ -58,14 +58,14 @@ void	rr(t_list **list_a, t_list **list_b, int p)
 		visualizer(*list_a, *list_b);
 	}
 }*/
-static void	ft_rotate(t_list *list)
+static void	ft_rotate(t_list **list)
 {
 	t_list	*new_last;
 	t_list	*new_first;
 
-	new_last = list;
-	list = list->next;
-	new_first = list;
+	new_last = *list;
+	*list = (*list)->next;
+	new_first = *list;
 	while (new_first->next)
 	{
 		new_first = new_first->next;
@@ -74,7 +74,7 @@ static void	ft_rotate(t_list *list)
 	new_first->next->next = NULL;
 }
 
-static void rr(t_list *a, t_list *b, int p)
+static void rr(t_list **a, t_list **b, int p)
 {
 	ft_rotate(a);
 	ft_rotate(b);
@@ -84,7 +84,7 @@ static void rr(t_list *a, t_list *b, int p)
 		ft_putstr("\x1b[36mExecute rr:\n\n");
 }
 
-void	ra_rb_rr(t_list *a, t_list *b, char c, int p)
+void	ra_rb_rr(t_list **a, t_list **b, char c, int p)
 {
 	if (c == 'a')
 	{
@@ -105,5 +105,5 @@ void	ra_rb_rr(t_list *a, t_list *b, char c, int p)
 	else
 		rr(a, b, p);
 	if (p == 2)
-		visualizer(a, b);
+		visualizer(*a, *b);
 }

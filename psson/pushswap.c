@@ -30,14 +30,27 @@ void	index_push(t_list (*stack))
 void sort(t_list *a,t_list *b, int p)
 {
 	int len=ft_lstsize(a);
-	if (len == 3)
-		sort_for_3(a, b, p);
+	if(is_sort(a))
+		return;
+	if(len<3)
+	{
+		if(ft_lstdata(a,0)>ft_lstdata(a,1))
+			sa_sb_ss(&a,&b,'a',p);
+	}
+	else if (len == 3)
+		sort_for_3(&a, &b, p);
 	else if (len <= 5)
-		sort_for_5(a, b, len, p);
+		sort_for_5(&a, &b, len, p);
 	else if (len >= 6 && len <= 100)
-		sort_for_100(a, b, len, p);
+		sort_for_100(&a, &b, len, p);
 	else
-		sort_for_500(a, b, len, p);
+		sort_for_500(&a, &b, len, p);
+	if (p == 2)
+	{
+		ft_printf("\x1b[36mSort stack : \n\n");
+		visualizer(a, 0);
+		ft_printf("\x1b[36mEnd of visualization\n");
+	}
 }
 
 int				main(int ac, char **av)
@@ -45,7 +58,7 @@ int				main(int ac, char **av)
 	t_list	*list_a;
 	t_list	*list_b;
 	t_info	*info;
-	if (ac < 2 || (ac < 3 && !ft_strcmp(av[1], "-v")))
+	if (ac < 2 )
 		return (0);
 	info = malloc(sizeof(t_info));
 	info->vis = 1;

@@ -1,12 +1,12 @@
 #include "pushswap.h"
 
-static int	search_max(t_list *b, int i)
+static int	search_max(t_list **b, int i)
 {
 	t_list	*tmp;
 	int		n;
 
 	n = 0;
-	tmp = b;
+	tmp = *b;
 	while (tmp)
 	{
 		if (tmp->index == i)
@@ -17,74 +17,76 @@ static int	search_max(t_list *b, int i)
 	return (n);
 }
 
-static void	sort_b(t_list *a, t_list *b, int len, int p)
+static void	sort_b(t_list **a, t_list **b, int len, int p)
 {
 	int	max_i;
 	int	half;
 	int	place;
 
-	max_i = len;
-	while (b)
+	max_i = len-1;
+	while (*b)
 	{
 		half = (max_i + 1) / 2;
 		place = search_max(b, max_i);
-		if (b->index == max_i)
+		if ((*b)->index == max_i)
 		{
 			pa_pb(a, b, 'a', p);
 			max_i--;
 		}
-		else if (place <= half && b->index != max_i)
+		else if (place <= half && (*b)->index != max_i)
 			ra_rb_rr(a, b, 'b', p);
-		else if (place > half && b->index != max_i)
+		else if (place > half && (*b)->index != max_i)
 			rra_rrb_rrr(a, b, 'b', p);
 	}
 }
 
-void	sort_for_100(t_list *a, t_list *b, int len, int p)
+void	sort_for_100(t_list **a, t_list **b, int len, int p)
 {
 	int	i;
 
 	i = 0;
-	ft_printf("fgds\n");
-	while (a)
+
+	while (*a)
 	{
-		if (a->index <= i && i > 1)
+
+		if ((*a)->index <= i )
 		{
 			pa_pb(a, b, 'b', p);
 			ra_rb_rr(a, b, 'b', p);
 			i++;
 		}
-		else if (a->index <= (i + 15))
+		else if ((*a)->index <= (i + 15))
 		{
 			pa_pb(a, b, 'b', p);
 			i++;
 		}
-		else if (a->index >= i)
+		else if ((*a)->index >= i)
 			ra_rb_rr(a, b, 'a', p);
 	}
+
 	
 	sort_b(a, b, len, p);
 }
 
-void	sort_for_500(t_list *a, t_list *b, int len, int p)
+void	sort_for_500(t_list **a, t_list **b, int len, int p)
 {
 	int	i;
 
 	i = 0;
-	while (a)
+	while (*a)
 	{
-		if (a->index <= i && i > 1)
+		if ((*a)->index <= i && i > 1)
 		{
 			pa_pb(a, b, 'b', p);
 			ra_rb_rr(a, b, 'b', p);
 			i++;
 		}
-		else if (a->index <= (i + 30))
+		else if ((*a)->index <= (i + 30))
 		{
 			pa_pb(a, b, 'b', p);
 			i++;
 		}
-		else if (a->index >= i)
+		else if ((*a)->index >= i)
 			ra_rb_rr(a, b, 'a', p);
 	}
 	sort_b(a, b, len, p);

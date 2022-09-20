@@ -58,21 +58,21 @@ void	ss(t_list *list_a, t_list *list_b, int p)
 	list = b;
 }*/
 
-static void ss(t_list *a, t_list *b, int p)
+static void ss(t_list **a, t_list **b, int p)
 {
-		ft_swap(&(a->n), &(a->next->n));
-		ft_swap(&(b->n), &(b->next->n));
+		ft_swap(&((*a)->n), &((*a)->next->n));
+		ft_swap(&((*b)->n), &((*b)->next->n));
 	if (p == 1)
 		ft_putstr("ss\n");
 	if (p == 2)
 		ft_putstr("\x1b[36mExecute ss:\n\n");
 }
 
-void	sa_sb_ss(t_list *a, t_list *b, char c, int p)
+void	sa_sb_ss(t_list **a, t_list **b, char c, int p)
 {
 	if (c == 'a')
 	{
-		ft_swap(&(a->n), &(a->next->n));
+		ft_swap(&((*a)->n), &((*a)->next->n));
 		if (p == 1)
 			ft_putstr("sa\n");
 		if (p == 2)
@@ -80,7 +80,7 @@ void	sa_sb_ss(t_list *a, t_list *b, char c, int p)
 	}
 	else if (c == 'b')
 	{
-		ft_swap(&(b->n), &(b->next->n));
+		ft_swap(&((*b)->n), &((*b)->next->n));
 		if (p == 1)
 			ft_putstr("sb\n");
 		if (p == 2)
@@ -89,5 +89,5 @@ void	sa_sb_ss(t_list *a, t_list *b, char c, int p)
 	else
 		ss(a, b, p);
 	if (p == 2)
-		visualizer(a, b);
+		visualizer(*a, *b);
 }

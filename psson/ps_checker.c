@@ -3,27 +3,27 @@
 static int	split(char *line, t_list **list_a, t_list **list_b)
 {
 	if (!(ft_strcmp(line, "ra")))
-		ra(list_a, list_b, 0);
+		ra_rb_rr(list_a, list_b, 'a', 0);
 	else if (!(ft_strcmp(line, "rb")))
-		rb(list_a, list_b, 0);
+		ra_rb_rr(list_a, list_b, 'b', 0);
 	else if (!(ft_strcmp(line, "rr")))
-		rr(list_a, list_b, 0);
+		ra_rb_rr(list_a, list_b, 'q', 0);
 	else if (!(ft_strcmp(line, "sa")))
-		sa(*list_a, *list_b, 0);
+		sa_sb_ss(list_a, list_b, 'a', 0);
 	else if (!(ft_strcmp(line, "sb")))
-		sb(*list_b, *list_b, 0);
+		sa_sb_ss(list_b, list_b, 'b', 0);
 	else if (!(ft_strcmp(line, "ss")))
-		ss(*list_a, *list_b, 0);
+		sa_sb_ss(list_a, list_b, 'q', 0);
 	else if (!(ft_strcmp(line, "rra")))
-		rra(list_a, list_b, 0);
+		rra_rrb_rrr(list_a, list_b, 'a', 0);
 	else if (!(ft_strcmp(line, "rrb")))
-		rrb(list_a, list_b, 0);
+		rra_rrb_rrr(list_a, list_b, 'b', 0);
 	else if (!(ft_strcmp(line, "rrr")))
-		rrr(list_a, list_b, 0);
+		rra_rrb_rrr(list_a, list_b, 'q', 0);
 	else if (!(ft_strcmp(line, "pa")))
-		pa(list_a, list_b, 0);
+		pa_pb(list_a, list_b, 'a', 0);
 	else if (!(ft_strcmp(line, "pb")))
-		pb(list_a, list_b, 0);
+		pa_pb(list_a, list_b, 'b', 0);
 	else
 		return (0);
 	return (1);
@@ -34,7 +34,8 @@ int			checker(t_list **list_a, t_list **list_b)
 	int		ret;
 	char	*line;
 
-	while ((ret = get_next_line(0, &line)) > 0)
+	ret = get_next_line(0, &line);
+	while (ret > 0)
 	{
 		if (ret == -1)
 		{
@@ -64,11 +65,11 @@ int			main(int ac, char **av)
 
 	if (ac < 2 || (ac < 3 && !ft_strcmp(av[1], "-v")))
 		return (0);
-	if (!(info = malloc(sizeof(t_info))))
-		return (0);
-	if (!(list_a = create_list(ac, av, &info)))
+	info = malloc(sizeof(t_info));
+	list_a = create_list(ac, av, &info);
+	if (!list_a)
 		return (free_all(list_a, info));
-	if ((ret = checker(&list_a, &list_b)) == 0)
+	if (checker(&list_a, &list_b) == 0)
 		return (free_all(list_a, info));
 	if (list_a && is_sort(list_a) && !list_b)
 		write(1, "OK\n", 3);
