@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 11:23:48 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 11:23:53 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int		is_sort(t_list *list_a)
+int	is_sort(t_list *list_a)
 {
 	while (list_a->next)
 	{
@@ -11,7 +23,7 @@ int		is_sort(t_list *list_a)
 	return (1);
 }
 
-int		find_max(t_list *list, int skip)
+int	find_max(t_list *list, int skip)
 {
 	int	max;
 
@@ -27,7 +39,7 @@ int		find_max(t_list *list, int skip)
 	return (max);
 }
 
-int		find_min(t_list *list)
+int	find_min(t_list *list)
 {
 	int	min;
 

@@ -39,7 +39,7 @@ typedef struct s_list
 
 typedef struct sa_list
 {
-	int             n;
+	int				n;
 	int				index;
 	struct sa_list	*next;
 }				t_list;
@@ -79,10 +79,10 @@ void			ft_lstadd_front(t_lib_list **lst, t_lib_list *new);
 void			ft_lstclear(t_lib_list **lst, void (*del)(void*));
 void			ft_lstdelone(t_lib_list *lst, void (*del)(void *));
 void			ft_lstiter(t_lib_list *lst, void (*f)(void *));
-t_lib_list			*ft_lstlast(t_lib_list *lst);
-t_lib_list			*ft_lstmap(t_lib_list *lst, void *(*f)(void *),
+t_lib_list		*ft_lstlast(t_lib_list *lst);
+t_lib_list		*ft_lstmap(t_lib_list *lst, void *(*f)(void *),
 					void (*del)(void *));
-t_lib_list			*ft_lstnew(void *content);
+t_lib_list		*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);

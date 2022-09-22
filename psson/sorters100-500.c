@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorters100-500.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 11:22:03 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 11:22:05 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 static int	search_max(t_list **b, int i)
@@ -23,7 +35,7 @@ static void	sort_b(t_list **a, t_list **b, int len, int p)
 	int	half;
 	int	place;
 
-	max_i = len-1;
+	max_i = len - 1;
 	while (*b)
 	{
 		half = (max_i + 1) / 2;
@@ -45,11 +57,9 @@ void	sort_for_100(t_list **a, t_list **b, int len, int p)
 	int	i;
 
 	i = 0;
-
 	while (*a)
 	{
-
-		if ((*a)->index <= i )
+		if ((*a)->index <= i)
 		{
 			pa_pb(a, b, 'b', p);
 			ra_rb_rr(a, b, 'b', p);
@@ -63,8 +73,6 @@ void	sort_for_100(t_list **a, t_list **b, int len, int p)
 		else if ((*a)->index >= i)
 			ra_rb_rr(a, b, 'a', p);
 	}
-
-	
 	sort_b(a, b, len, p);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorters3-5.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 11:20:56 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 11:20:58 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 void	sort_for_3(t_list **l1, t_list **l2, int p)
@@ -9,7 +21,6 @@ void	sort_for_3(t_list **l1, t_list **l2, int p)
 	a = (*l1)->n;
 	b = (*l1)->next->n;
 	c = (*l1)->next->next->n;
-	
 	if (a > b && c > b && c > a)
 		sa_sb_ss(l1, l2, 'a', p);
 	else if (a > b && a > c && b > c)
@@ -46,6 +57,7 @@ static void	five_finish(t_list **l1, t_list **l2, int p)
 void	sort_for_5(t_list **l1, t_list **l2, int len, int p)
 {
 	t_list	*max_min;
+
 	max_min = *l1;
 	while (ft_lstsize(*l1) != 3)
 	{
@@ -54,7 +66,7 @@ void	sort_for_5(t_list **l1, t_list **l2, int len, int p)
 			max_min = max_min->next;
 			pa_pb(l1, l2, 'b', p);
 		}
-		else if (max_min->index == len)
+		else if (max_min->index == len - 1)
 		{
 			max_min = max_min->next;
 			pa_pb(l1, l2, 'b', p);

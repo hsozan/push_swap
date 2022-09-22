@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rules2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 11:17:29 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 11:17:31 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 /*void	sa(t_list *list_a, t_list *list_b, int p)
@@ -58,10 +70,10 @@ void	ss(t_list *list_a, t_list *list_b, int p)
 	list = b;
 }*/
 
-static void ss(t_list **a, t_list **b, int p)
+static void	ss(t_list **a, t_list **b, int p)
 {
-		ft_swap(&((*a)->n), &((*a)->next->n));
-		ft_swap(&((*b)->n), &((*b)->next->n));
+	ft_swap(&((*a)->n), &((*a)->next->n));
+	ft_swap(&((*b)->n), &((*b)->next->n));
 	if (p == 1)
 		ft_putstr("ss\n");
 	if (p == 2)

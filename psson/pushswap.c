@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 10:59:40 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 10:59:44 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
+
 void	index_push(t_list (*stack))
 {
 	int	data1;
@@ -27,15 +40,17 @@ void	index_push(t_list (*stack))
 	}
 }
 
-void sort(t_list *a,t_list *b, int p)
+void	sort(t_list *a, t_list *b, int p)
 {
-	int len=ft_lstsize(a);
-	if(is_sort(a))
-		return;
-	if(len<3)
+	int	len ;
+
+	len = ft_lstsize(a);
+	if (is_sort(a))
+		return ;
+	if (len < 3)
 	{
-		if(ft_lstdata(a,0)>ft_lstdata(a,1))
-			sa_sb_ss(&a,&b,'a',p);
+		if (ft_lstdata(a, 0) > ft_lstdata(a, 1))
+			sa_sb_ss(&a, &b, 'a', p);
 	}
 	else if (len == 3)
 		sort_for_3(&a, &b, p);
@@ -53,12 +68,13 @@ void sort(t_list *a,t_list *b, int p)
 	}
 }
 
-int				main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_list	*list_a;
 	t_list	*list_b;
 	t_info	*info;
-	if (ac < 2 )
+
+	if (ac < 2)
 		return (0);
 	info = malloc(sizeof(t_info));
 	info->vis = 1;
@@ -75,7 +91,13 @@ int				main(int ac, char **av)
 		visualizer(list_a, 0);
 	}
 	index_push(list_a);
-	sort(list_a, list_b,info->vis);
+	sort(list_a, list_b, info->vis);
+	t_list *a=list_a;
+	while (a)
+	{
+		ft_printf("%d ",a->n);
+		a=a->next;
+	}
 	free_list(list_a);
 	free(info);
 }

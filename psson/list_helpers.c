@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_helpers.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 10:56:33 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 10:56:35 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 void	add_link(t_list **list, int n)
@@ -34,15 +46,17 @@ void	free_list(t_list *list)
 		tmp = list;
 		list = list->next;
 		if (tmp)
-		free(tmp);
+			free(tmp);
 	}
 	list = NULL;
 }
 
-int		free_all(t_list *list, t_info *info)
+int	free_all(t_list *list, t_info *info)
 {
-	free_list(list);
-	free(info);
+	if (list)
+		free_list(list);
+	if (info)
+		free(info);
 	write(2, "Error\n", 6);
 	return (0);
 }
@@ -61,6 +75,7 @@ t_list	*ft_lsthere(t_list *lst, int c)
 	}
 	return (lst);
 }
+
 int	ft_lstdata(t_list *lst, int c)
 {
 	int	data;

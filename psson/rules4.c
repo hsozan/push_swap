@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rules4.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 11:19:40 by hsozan            #+#    #+#             */
+/*   Updated: 2022/09/22 11:19:44 by hsozan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 /*void	rra(t_list **list_a, t_list **list_b, int p)
@@ -99,10 +111,10 @@ static void	ft_reverse_rotate(t_list **list)
 	}
 }
 
-static void rrr(t_list **a, t_list **b, int p)
+static void	rrr(t_list **a, t_list **b, int p)
 {
-		ft_reverse_rotate(a);
-		ft_reverse_rotate(b);
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
 	if (p == 1)
 		write(1, "rrr\n", 4);
 	if (p == 2)
@@ -114,18 +126,18 @@ void	rra_rrb_rrr(t_list **a, t_list **b, char c, int p)
 	if (c == 'a')
 	{
 		ft_reverse_rotate(a);
-	if (p == 1)
-		write(1, "rra\n", 4);
-	if (p == 2)
-		ft_putstr("\x1b[36mExecute rra:\n\n");
+		if (p == 1)
+			write(1, "rra\n", 4);
+		if (p == 2)
+			ft_putstr("\x1b[36mExecute rra:\n\n");
 	}
 	else if (c == 'b')
 	{
 		ft_reverse_rotate(b);
-	if (p == 1)
-		write(1, "rrb\n", 4);
-	if (p == 2)
-		ft_putstr("\x1b[36mExecute rrb:\n\n");
+		if (p == 1)
+			write(1, "rrb\n", 4);
+		if (p == 2)
+			ft_putstr("\x1b[36mExecute rrb:\n\n");
 	}
 	else
 		rrr(a, b, p);
