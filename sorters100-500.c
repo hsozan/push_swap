@@ -59,7 +59,7 @@ void	sort_for_100(t_list **a, t_list **b, int len, int p)
 	i = 0;
 	while (*a)
 	{
-		if ((*a)->index <= i&& i>1)
+		if ((*a)->index <= i && i > 1)
 		{
 			pa_pb(a, b, 'b', p);
 			ra_rb_rr(a, b, 'b', p);

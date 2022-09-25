@@ -12,57 +12,62 @@
 
 #include "pushswap.h"
 
-static int	split(char *line, t_list **list_a, t_list **list_b)
+static int	rr(char *line, t_list **list_a, t_list **list_b)
 {
-	if (line[0]=='r' && line[1]=='r' && line[2]=='a')
-		rra_rrb_rrr(list_a, list_b, 'a', 0);
-	else if (line[0]=='r' && line[1]=='r' && line[2]=='b')
-		rra_rrb_rrr(list_a, list_b, 'b', 0);
-	else if (line[0]=='r' && line[1]=='r' && line[2]=='r')
-		ra_rb_rr(list_a, list_b, 'q', 0);
-	else if (line[0]=='s' && line[1]=='a')
-		sa_sb_ss(list_a, list_b, 'a', 0);
-	else if (line[0]=='s' && line[1]=='b')
-		sa_sb_ss(list_b, list_b, 'b', 0);
-	else if (line[0]=='s' && line[1]=='s')
-		sa_sb_ss(list_a, list_b, 'q', 0);
-	else if (line[0]=='r' && line[1]=='a')
+	if (!(ft_strcmp("ra", line)))
 		ra_rb_rr(list_a, list_b, 'a', 0);
-	else if (line[0]=='r' && line[1]=='b')
+	else if (!(ft_strcmp("rb", line)))
 		ra_rb_rr(list_a, list_b, 'b', 0);
-	else if (line[0]=='r' && line[1]=='r')
+	else if (!(ft_strcmp("rr", line)))
 		ra_rb_rr(list_a, list_b, 'q', 0);
-	else if (line[0]=='p' && line[1]=='a')
+	else if (!(ft_strcmp("pa", line)))
 		pa_pb(list_a, list_b, 'a', 0);
-	else if (line[0]=='p' && line[1]=='b')
+	else if (!(ft_strcmp("pb", line)))
 		pa_pb(list_a, list_b, 'b', 0);
 	else
 		return (0);
-	if(is_sort(*list_a)&&!(*list_b))
-		return 2;
+	if (is_sort(*list_a) && !(*list_b))
+		return (2);
 	return (1);
 }
+
+static int	rrr(char *line, t_list **list_a, t_list **list_b)
+{
+	if (!(ft_strcmp("rra", line)))
+		rra_rrb_rrr(list_a, list_b, 'a', 0);
+	else if (!(ft_strcmp("rrb", line)))
+		rra_rrb_rrr(list_a, list_b, 'b', 0);
+	else if (!(ft_strcmp("rrr", line)))
+		rra_rrb_rrr(list_a, list_b, 'q', 0);
+	else if (!(ft_strcmp("sa", line)))
+		sa_sb_ss(list_a, list_b, 'a', 0);
+	else if (!(ft_strcmp("sb", line)))
+		sa_sb_ss(list_b, list_b, 'b', 0);
+	else if (!(ft_strcmp("ss", line)))
+		sa_sb_ss(list_a, list_b, 'q', 0);
+	else
+		return (rr(line, list_a, list_b));
+	return (1);
+}
+
 int	checker(t_list **list_a, t_list **list_b)
 {
 	int		ret;
 	char	*line;
 	int		i;
-	
+
 	while (1)
 	{
-		ret = split(line, list_a, list_b);
 		get_next_line(0, &line);
-		if (ret ==2)
-		{
-			write(1, "OK\n", 3);
-			return 1;
-		}
-		else if(i++>ft_lstsize(*list_a)*ft_lstsize(*list_a))
-		{
-			write(2, "KO\n", 3);
-			return 0;
-		}
-		if(line)
+		ret = rrr(line, list_a, list_b);
+		if (ret == 2)
+			return (1);
+		else if (i++ > ft_lstsize(*list_a)
+			* ft_lstsize(*list_a))
+			return (0);
+		else if (ret == 0)
+			return (-1);
+		if (line)
 			free(line);
 	}
 	return (1);
@@ -73,7 +78,6 @@ int	main(int ac, char **av)
 	t_list	*list_a;
 	t_list	*list_b;
 	int		p;
-	int ret;
 
 	if (ac < 2)
 		return (0);
@@ -82,18 +86,14 @@ int	main(int ac, char **av)
 	list_b = NULL;
 	if (!(list_a))
 		return (write(2, "Error\n", 6));
-//	if (!(checker(&list_a, &list_b)))
-//	{
-//		free_list(list_a);
-//		free_list(list_b);
-//		return (write(2, "Error", 5));
-//	}
-
-	checker(&list_a,&list_b);
-
+	p = checker(&list_a, &list_b);
+	if (p == 1)
+		write(1, "OK", 2);
+	else if (p == 0)
+		write(2, "KO", 2);
+	else if (p == -1)
+		write(2, "Error", 5);
 	if (list_b)
 		free_list(list_b);
 	free_list(list_a);
-	
-
 }

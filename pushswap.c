@@ -73,6 +73,7 @@ int	main(int ac, char **av)
 	t_list	*list_a;
 	t_list	*list_b;
 	int		p;
+
 	if (ac < 2)
 		return (0);
 	p = 1;
@@ -80,17 +81,12 @@ int	main(int ac, char **av)
 	list_b = NULL;
 	if (!(list_a))
 		return (write(2, "Error\n", 6));
-	if (p== 2)
+	if (p == 2)
 	{
 		ft_printf("\x1b[36m\nStart Visualization...\n\nStart Stack : \n\n");
 		visualizer(list_a, 0);
 	}
 	index_push(list_a);
 	sort(&list_a, &list_b, p);
-	while (list_a)
-	{
-		ft_printf("%i ",list_a->n);
-		list_a=list_a->next;
-	}
 	free_list(list_a);
 }
