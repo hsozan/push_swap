@@ -14,59 +14,56 @@
 
 static int	split(char *line, t_list **list_a, t_list **list_b)
 {
-	if (!(ft_strcmp(line, "ra")))
-		ra_rb_rr(list_a, list_b, 'a', 0);
-	else if (!(ft_strcmp(line, "rb")))
-		ra_rb_rr(list_a, list_b, 'b', 0);
-	else if (!(ft_strcmp(line, "rr")))
-		ra_rb_rr(list_a, list_b, 'q', 0);
-	else if (!(ft_strcmp(line, "sa")))
-		sa_sb_ss(list_a, list_b, 'a', 0);
-	else if (!(ft_strcmp(line, "sb")))
-		sa_sb_ss(list_b, list_b, 'b', 0);
-	else if (!(ft_strcmp(line, "ss")))
-		sa_sb_ss(list_a, list_b, 'q', 0);
-	else if (!(ft_strcmp(line, "rra")))
+	if (line[0]=='r' && line[1]=='r' && line[2]=='a')
 		rra_rrb_rrr(list_a, list_b, 'a', 0);
-	else if (!(ft_strcmp(line, "rrb")))
+	else if (line[0]=='r' && line[1]=='r' && line[2]=='b')
 		rra_rrb_rrr(list_a, list_b, 'b', 0);
-	else if (!(ft_strcmp(line, "rrr")))
-		rra_rrb_rrr(list_a, list_b, 'q', 0);
-	else if (!(ft_strcmp(line, "pa")))
+	else if (line[0]=='r' && line[1]=='r' && line[2]=='r')
+		ra_rb_rr(list_a, list_b, 'q', 0);
+	else if (line[0]=='s' && line[1]=='a')
+		sa_sb_ss(list_a, list_b, 'a', 0);
+	else if (line[0]=='s' && line[1]=='b')
+		sa_sb_ss(list_b, list_b, 'b', 0);
+	else if (line[0]=='s' && line[1]=='s')
+		sa_sb_ss(list_a, list_b, 'q', 0);
+	else if (line[0]=='r' && line[1]=='a')
+		ra_rb_rr(list_a, list_b, 'a', 0);
+	else if (line[0]=='r' && line[1]=='b')
+		ra_rb_rr(list_a, list_b, 'b', 0);
+	else if (line[0]=='r' && line[1]=='r')
+		ra_rb_rr(list_a, list_b, 'q', 0);
+	else if (line[0]=='p' && line[1]=='a')
 		pa_pb(list_a, list_b, 'a', 0);
-	else if (!(ft_strcmp(line, "pb")))
+	else if (line[0]=='p' && line[1]=='b')
 		pa_pb(list_a, list_b, 'b', 0);
 	else
 		return (0);
-	if(is_sort(*list_a))
-	return 2;
+	if(is_sort(*list_a)&&!(*list_b))
+		return 2;
 	return (1);
 }
-
 int	checker(t_list **list_a, t_list **list_b)
 {
 	int		ret;
 	char	*line;
 	int		i;
-	ret = get_next_line(0, &line);
+	
 	while (1)
 	{
-		if (!(split(line, list_a, list_b)))
+		ret = split(line, list_a, list_b);
+		get_next_line(0, &line);
+		if (ret ==2)
 		{
-			return (0);
-		}
-		if(line)
-			free(line);
-		if (split(line, list_a, list_b)==2)
-		{
-		write(1, "OK\n", 3);
-			return 0;
+			write(1, "OK\n", 3);
+			return 1;
 		}
 		else if(i++>ft_lstsize(*list_a)*ft_lstsize(*list_a))
 		{
 			write(2, "KO\n", 3);
 			return 0;
 		}
+		if(line)
+			free(line);
 	}
 	return (1);
 }
