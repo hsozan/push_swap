@@ -6,7 +6,7 @@
 /*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 08:53:35 by hsozan            #+#    #+#             */
-/*   Updated: 2022/02/09 15:54:58 by hsozan           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:55:57 by hsozan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 size_t	ft_strlen(const char *s)
 {
 	size_t	l;
+
 	if (!s)
 		return (0);
 	l = 0;

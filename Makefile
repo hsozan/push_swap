@@ -1,4 +1,4 @@
-NAME 		=pushswap
+NAME 		=push_swap
 CC	 		=gcc -Wall -Werror -Wextra
 RM			=rm -rf
 SRC			=$(shell find . ! -name "ps_checker.c" -name "*.c")
@@ -16,11 +16,11 @@ $(NAME):
 	@gcc $(SRC) libft.a -I ./ -o $(NAME)
 	@echo "$(CYAN)$(NAME)$(WHITE) is ready to use"
 
-check:
+bonus:
 	@make bonus -C libft
 	@cp libft/libft.h .
 	@cp libft/libft.a .
-	@gcc $(CHECK_SRC) libft.a -I ./ -o check
+	@gcc $(CHECK_SRC) libft.a -I ./ -o checker
 	@echo "$(BLUE)checker$(WHITE) is ready to use"
 
 clean:
@@ -30,9 +30,9 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) check
+	@$(RM) checker
 	@echo "$(CYAN)$(NAME)$(WHITE) and $(BLUE)checker$(WHITE) are deleted"
 
 re: fclean all
 
-rec: fclean check
+rebonus: fclean bonus
