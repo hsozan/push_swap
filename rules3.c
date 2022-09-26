@@ -98,7 +98,7 @@ static void	rr(t_list **a, t_list **b, int p)
 
 void	ra_rb_rr(t_list **a, t_list **b, char c, int p)
 {
-	if (c == 'a')
+	if (c == 'a' && ft_lstsize(*a) > 1)
 	{
 		ft_rotate(a);
 		if (p == 1)
@@ -106,7 +106,7 @@ void	ra_rb_rr(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute ra:\n\n");
 	}
-	else if (c == 'b')
+	else if (c == 'b' && ft_lstsize(*b) > 1)
 	{
 		ft_rotate(b);
 		if (p == 1)
@@ -114,7 +114,7 @@ void	ra_rb_rr(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute rb:\n\n");
 	}
-	else
+	else if (ft_lstsize(*a) > 1 && ft_lstsize(*b) > 1)
 		rr(a, b, p);
 	if (p == 2)
 		visualizer(*a, *b);

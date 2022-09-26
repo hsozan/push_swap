@@ -82,7 +82,7 @@ static void	ss(t_list **a, t_list **b, int p)
 
 void	sa_sb_ss(t_list **a, t_list **b, char c, int p)
 {
-	if (c == 'a')
+	if (c == 'a' && ft_lstsize(*a) > 1)
 	{
 		ft_swap(&((*a)->n), &((*a)->next->n));
 		if (p == 1)
@@ -90,7 +90,7 @@ void	sa_sb_ss(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute sa:\n\n");
 	}
-	else if (c == 'b')
+	else if (c == 'b' && ft_lstsize(*b) > 1)
 	{
 		ft_swap(&((*b)->n), &((*b)->next->n));
 		if (p == 1)
@@ -98,7 +98,7 @@ void	sa_sb_ss(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute sb:\n\n");
 	}
-	else
+	else if (ft_lstsize(*b) > 1 && ft_lstsize(*a) > 1)
 		ss(a, b, p);
 	if (p == 2)
 		visualizer(*a, *b);

@@ -34,7 +34,7 @@ static int	rr(char *line, t_list **list_a, t_list **list_b)
 static int	rrr(char *line, t_list **list_a, t_list **list_b)
 {
 	if (!(ft_strcmp("rra", line)))
-			rra_rrb_rrr(list_a, list_b, 'a', 0);
+		rra_rrb_rrr(list_a, list_b, 'a', 0);
 	else if (!(ft_strcmp("rrb", line)))
 		rra_rrb_rrr(list_a, list_b, 'b', 0);
 	else if (!(ft_strcmp("rrr", line)))
@@ -55,18 +55,17 @@ int	checker(t_list **list_a, t_list **list_b)
 	int		ret;
 	char	*line;
 	int		i;
-	char *a;
+
 	while (1)
 	{
-		if(!get_next_line(0, &line))
-			return (0);
+		i = get_next_line(0, &line);
 		ret = rrr(line, list_a, list_b);
-		if (ret == 2)
+		if (is_sort(*list_a))
 			return (1);
-		if (ret == 0)
-			return (-1);
-		if (ret != 1)
+		else if (i == 0)
 			return (0);
+		else if (ret == 0)
+			return (-1);
 		if (line)
 			free(line);
 	}

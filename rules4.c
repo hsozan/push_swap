@@ -123,7 +123,7 @@ static void	rrr(t_list **a, t_list **b, int p)
 
 void	rra_rrb_rrr(t_list **a, t_list **b, char c, int p)
 {
-	if (c == 'a')
+	if (c == 'a' && ft_lstsize(*a) > 1)
 	{
 		ft_reverse_rotate(a);
 		if (p == 1)
@@ -131,7 +131,7 @@ void	rra_rrb_rrr(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute rra:\n\n");
 	}
-	else if (c == 'b')
+	else if (c == 'b' && ft_lstsize(*b) > 1)
 	{
 		ft_reverse_rotate(b);
 		if (p == 1)
@@ -139,7 +139,7 @@ void	rra_rrb_rrr(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute rrb:\n\n");
 	}
-	else
+	else if (ft_lstsize(*a) > 1 && ft_lstsize(*b) > 1)
 		rrr(a, b, p);
 	if (p == 2)
 		visualizer(*a, *b);

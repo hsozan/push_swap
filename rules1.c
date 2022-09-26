@@ -61,7 +61,7 @@ static void	ft_push(t_list **left, t_list **right)
 
 void	pa_pb(t_list **a, t_list **b, char c, int p)
 {
-	if (c == 'a')
+	if (c == 'a' && *b)
 	{
 		ft_push(b, a);
 		if (p == 1)
@@ -69,7 +69,7 @@ void	pa_pb(t_list **a, t_list **b, char c, int p)
 		if (p == 2)
 			ft_putstr("\x1b[36mExecute pa:\n\n");
 	}
-	else if (c == 'b')
+	else if (c == 'b' && *a)
 	{
 		ft_push(a, b);
 		if (p == 1)
