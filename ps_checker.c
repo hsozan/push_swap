@@ -91,7 +91,7 @@ int	main(int ac, char **av)
 	else if (p == 0)
 		write(1, "KO", 2);
 	else if (p == -1)
-		write(2, "Error", 5);
+		write(2, "Error\n", 6);
 	if (list_b)
 		free_list(list_b);
 	free_list(list_a);

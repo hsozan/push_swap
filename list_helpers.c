@@ -51,16 +51,6 @@ void	free_list(t_list *list)
 	list = NULL;
 }
 
-int	free_all(t_list *list, t_info *info)
-{
-	if (list)
-		free_list(list);
-	if (info)
-		free(info);
-	write(2, "Error\n", 6);
-	return (0);
-}
-
 t_list	*ft_lsthere(t_list *lst, int c)
 {
 	int	i;
