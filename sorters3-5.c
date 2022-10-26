@@ -56,24 +56,24 @@ static void	five_finish(t_list **l1, t_list **l2, int p)
 
 void	sort_for_5(t_list **l1, t_list **l2, int len, int p)
 {
-	t_list	*max_min;
+	t_list	*tmp;
 
-	max_min = *l1;
+	tmp = *l1;
 	while (ft_lstsize(*l1) != 3)
 	{
-		if (max_min->index == 0)
+		if (tmp->index == 0)
 		{
-			max_min = max_min->next;
+			tmp = tmp->next;
 			pa_pb(l1, l2, 'b', p);
 		}
-		else if (max_min->index == len - 1)
+		else if (tmp->index == len - 1)
 		{
-			max_min = max_min->next;
+			tmp = tmp->next;
 			pa_pb(l1, l2, 'b', p);
 		}
 		else
 		{
-			max_min = max_min->next;
+			tmp = tmp->next;
 			ra_rb_rr(l1, l2, 'a', p);
 		}
 	}
