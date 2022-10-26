@@ -20,6 +20,8 @@ static void	print(t_list *list, int max, int min)
 		ft_printf("\x1b[32m%d", list->n);
 	else if (list)
 		ft_printf("\x1b[33m%d", list->n);
+	else if (!list)
+		return ;
 }
 
 void	init_max(t_list *list, int *max, int *min)
@@ -53,7 +55,8 @@ void	visualizer(t_list *list_a, t_list *list_b)
 	{
 		ft_printf("\x1b[36mPosition %d -> ", i++);
 		print(list_a, max_a, min_a);
-		visualizercontinued(list_a);
+		if (list_a)
+			visualizercontinued(list_a);
 		print(list_b, max_b, min_b);
 		ft_putchar('\n');
 		if (list_a)

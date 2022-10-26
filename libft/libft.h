@@ -47,6 +47,7 @@ typedef struct sa_list
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
+char			*get_next_line_str(int fd);
 int				count_words(const char *str, char c);
 int				get_next_line(int fd, char **line);
 char			*join_str(char const *s1, char const *s2);

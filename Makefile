@@ -28,6 +28,9 @@ clean:
 	@$(RM) libft.h
 	@make fclean -C libft
 
+norm:
+	@norminette *.c *.h
+	@norminette libft/*.c libft/*.h
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) checker

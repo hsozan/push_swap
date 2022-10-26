@@ -54,15 +54,14 @@ int	checker(t_list **list_a, t_list **list_b)
 {
 	int		ret;
 	char	*line;
-	int		i;
 
 	while (1)
 	{
-		i = get_next_line(0, &line);
+		line = get_next_line_str(0);
 		ret = rrr(line, list_a, list_b);
-		if (is_sort(*list_a))
+		if (ret == 2)
 			return (1);
-		else if (i == 0)
+		else if (!line)
 			return (0);
 		else if (ret == 0)
 			return (-1);

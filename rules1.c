@@ -16,10 +16,10 @@ static void	ft_push(t_list **left, t_list **right)
 {
 	t_list	*tmp;
 
-	tmp = *left;
-	*left = (*left)->next;
-	tmp->next = *right;
-	*right = tmp;
+		tmp = *left;
+		*left = (*left)->next;
+		tmp->next = *right;
+		*right = tmp;
 }
 
 void	pa_pb(t_list **a, t_list **b, char c, int p)

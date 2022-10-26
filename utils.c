@@ -14,6 +14,8 @@
 
 int	is_sort(t_list *list_a)
 {
+	if (!list_a)
+		return (0);
 	while (list_a->next)
 	{
 		if (list_a->n > list_a->next->n)
