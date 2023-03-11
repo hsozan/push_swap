@@ -1,5 +1,5 @@
  push_swap 125 
  
-./push_swap -v <sayılar> şeklinde çalıştırısan basit bi şekilde stackler üzerindeki işlemleri gösterir
+./push_swap -v <sayılar> şeklinde çalıştırısan basit bir şekilde stackler üzerindeki işlemleri gösterir
 
 ./checker küçük listelerde saçmalayabiliyo onu düzeltmek lazım
