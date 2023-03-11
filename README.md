@@ -1,5 +1,5 @@
  push_swap 125 
  
-./push_swap -v <sayılar> şeklinde çalıştırısan basit bir şekilde stackler üzerindeki işlemleri gösterir
+Run with "./push_swap -v <numbers>" to monitor both stacks in a simple display at every move.
 
-./checker küçük listelerde saçmalayabiliyo onu düzeltmek lazım
+./checker might secrew up with small number counts. That needs fixing yet again.
