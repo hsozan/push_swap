@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*   By: hsozan <hsozan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 11:23:48 by hsozan            #+#    #+#             */
-/*   Updated: 2022/09/22 11:23:53 by hsozan           ###   ########.fr       */
+/*   Updated: 2023/04/10 12:06:08 by hsozan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ int	find_min(t_list *list)
 	if (list->n < min)
 		min = list->n;
 	return (min);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int	count;
+
+	count = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
 }

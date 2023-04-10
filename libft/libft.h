@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hsozan <hsozan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 16:29:28 by apuchill          #+#    #+#             */
-/*   Updated: 2022/02/25 07:36:01 by hsozan           ###   ########.fr       */
+/*   Updated: 2023/04/10 12:07:47 by hsozan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_lib_list;
 
-typedef struct sa_list
-{
-	int				n;
-	int				index;
-	struct sa_list	*next;
-}				t_list;
+
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
@@ -84,7 +79,6 @@ t_lib_list		*ft_lstlast(t_lib_list *lst);
 t_lib_list		*ft_lstmap(t_lib_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 t_lib_list		*ft_lstnew(void *content);
-int				ft_lstsize(t_list *lst);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);

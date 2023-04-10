@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsozan <hsozan@student.42kocaeli.com.      +#+  +:+       +#+        */
+/*   By: hsozan <hsozan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 11:12:19 by hsozan            #+#    #+#             */
-/*   Updated: 2022/09/22 11:12:22 by hsozan           ###   ########.fr       */
+/*   Updated: 2023/04/10 12:07:32 by hsozan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ typedef struct s_info
 {
 	int				vis;
 }					t_info;
+
+typedef struct sa_list
+{
+	int				n;
+	int				index;
+	struct sa_list	*next;
+}				t_list;
 
 //rules
 void			pa_pb(t_list **a, t_list **b, char c, int p);
@@ -57,9 +64,9 @@ static void		print(t_list *list, int max, int min);
 void			init_max(t_list *list, int *max, int *min);
 //utils.c
 int				is_sort(t_list *list_a);
-int				find_size(t_list *list);
 int				find_max(t_list *list, int skip);
 int				find_min(t_list *list);
-int				find_pos(int n, t_list *list);
+int				ft_lstsize(t_list *lst);
+
 
 #endif
